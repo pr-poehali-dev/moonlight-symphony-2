@@ -6,7 +6,6 @@ export default function SplineScene() {
   const [hasError, setHasError] = useState(false)
 
   const handleLoad = () => {
-    console.log("Spline scene loaded successfully")
     setIsLoading(false)
     setHasError(false)
   }
@@ -32,7 +31,7 @@ export default function SplineScene() {
         <div className="absolute inset-0 w-full h-full flex items-center justify-center">
           <div className="text-foreground text-center">
             <div className="text-lg mb-2">3D сцена недоступна</div>
-            <div className="text-sm opacity-70">Не удалось загрузить 3D модель</div>
+            <div className="text-sm opacity-70">Не удалось загрузить модель</div>
           </div>
         </div>
       )}
