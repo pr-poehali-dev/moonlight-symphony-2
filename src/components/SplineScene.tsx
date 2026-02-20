@@ -1,55 +1,15 @@
-import { Suspense, useState } from "react"
-import Spline from "@splinetool/react-spline"
+const HERO_BG = "https://cdn.poehali.dev/projects/50e78ae3-c5bd-4307-a25c-13c9259875dc/files/c69b6882-3481-4de6-8e7e-9a3c5114d374.jpg"
 
 export default function SplineScene() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [hasError, setHasError] = useState(false)
-
-  const handleLoad = () => {
-    setIsLoading(false)
-    setHasError(false)
-  }
-
-  const handleError = (error: unknown) => {
-    console.log("Spline scene failed to load:", error)
-    setIsLoading(false)
-    setHasError(true)
-  }
-
   return (
-    <div className="absolute inset-0 w-full h-full bg-background">
-      {isLoading && (
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-          <div className="text-foreground text-center">
-            <div className="text-lg mb-2">Загрузка 3D сцены...</div>
-            <div className="text-sm opacity-70">Пожалуйста, подождите</div>
-          </div>
-        </div>
-      )}
-
-      {hasError && (
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-          <div className="text-foreground text-center">
-            <div className="text-lg mb-2">3D сцена недоступна</div>
-            <div className="text-sm opacity-70">Не удалось загрузить модель</div>
-          </div>
-        </div>
-      )}
-
-      {!hasError && (
-        <Suspense fallback={null}>
-          <Spline
-            scene="https://prod.spline.design/l8gr6AhxxCqDIdBx/scene.splinecode"
-            onLoad={handleLoad}
-            onError={handleError}
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "transparent",
-            }}
-          />
-        </Suspense>
-      )}
+    <div className="absolute inset-0 w-full h-full bg-background overflow-hidden">
+      <img
+        src={HERO_BG}
+        alt="Farming Simulator 19"
+        className="w-full h-full object-cover opacity-40"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
     </div>
   )
 }
